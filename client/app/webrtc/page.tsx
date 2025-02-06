@@ -1,9 +1,18 @@
-import React from 'react'
-
+"use client";
+import { useRouter, usePathname } from "next/navigation";
+import { v4 } from "uuid";
 const page = () => {
-  return (
-    <div>this is a test</div>
-  )
-}
+  const router = useRouter();
+  const pathname = usePathname();
+  const handleRoom = () => {
+    router.push(`${pathname}/${v4()}`);
+  };
 
-export default page
+  return (
+    <div>
+      <button onClick={handleRoom}>create room</button>
+    </div>
+  );
+};
+
+export default page;
